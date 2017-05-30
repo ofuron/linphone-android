@@ -89,7 +89,7 @@ android_targets = {
 class AndroidPreparator(prepare.Preparator):
 
     def __init__(self, targets=android_targets):
-        prepare.Preparator.__init__(self, targets, default_targets=['armv7', 'arm64', 'x86'])
+        prepare.Preparator.__init__(self, targets, default_targets=['armv7'])
         self.min_supported_ndk = 10
         self.max_supported_ndk = 13
         self.unsupported_ndk_version = None
@@ -103,26 +103,47 @@ class AndroidPreparator(prepare.Preparator):
         prepare.Preparator.parse_args(self)
 
         if self.args.all_codecs:
-            self.additional_args += ["-DENABLE_GPL_THIRD_PARTIES=YES"]
-            self.additional_args += ["-DENABLE_NON_FREE_CODECS=YES"]
-            self.additional_args += ["-DENABLE_AMRNB=YES"]
-            self.additional_args += ["-DENABLE_AMRWB=YES"]
-            self.additional_args += ["-DENABLE_BV16=YES"]
-            self.additional_args += ["-DENABLE_CODEC2=YES"]
-            self.additional_args += ["-DENABLE_G729=YES"]
-            self.additional_args += ["-DENABLE_GSM=YES"]
-            self.additional_args += ["-DENABLE_ILBC=YES"]
+            self.additional_args += ["-DENABLE_GPL_THIRD_PARTIES=NO"]
+            self.additional_args += ["-DENABLE_NON_FREE_CODECS=NO"]
+            self.additional_args += ["-DENABLE_AMRNB=NO"]
+            self.additional_args += ["-DENABLE_AMRWB=NO"]
+            self.additional_args += ["-DENABLE_BV16=NO"]
+            self.additional_args += ["-DENABLE_CODEC2=NO"]
+            self.additional_args += ["-DENABLE_G729=NO"]
+            self.additional_args += ["-DENABLE_GSM=NO"]
+            self.additional_args += ["-DENABLE_ILBC=NO"]
             self.additional_args += ["-DENABLE_ISAC=YES"]
             self.additional_args += ["-DENABLE_OPUS=YES"]
             self.additional_args += ["-DENABLE_SILK=YES"]
             self.additional_args += ["-DENABLE_SPEEX=YES"]
-            self.additional_args += ["-DENABLE_FFMPEG=YES"]
-            self.additional_args += ["-DENABLE_H263=YES"]
-            self.additional_args += ["-DENABLE_H263P=YES"]
-            self.additional_args += ["-DENABLE_MPEG4=YES"]
-            self.additional_args += ["-DENABLE_OPENH264=YES"]
-            self.additional_args += ["-DENABLE_VPX=YES"]
+            self.additional_args += ["-DENABLE_FFMPEG=NO"]
+            self.additional_args += ["-DENABLE_H263=NO"]
+            self.additional_args += ["-DENABLE_H263P=NO"]
+            self.additional_args += ["-DENABLE_MPEG4=NO"]
+            self.additional_args += ["-DENABLE_OPENH264=NO"]
+            self.additional_args += ["-DENABLE_VPX=NO"]
             # self.additional_args += ["-DENABLE_X264=YES"] # Do not activate x264 because it has text relocation issues
+        else:
+            self.additional_args += ["-DENABLE_GPL_THIRD_PARTIES=NO"]
+            self.additional_args += ["-DENABLE_NON_FREE_CODECS=NO"]
+            self.additional_args += ["-DENABLE_AMRNB=NO"]
+            self.additional_args += ["-DENABLE_AMRWB=NO"]
+            self.additional_args += ["-DENABLE_BV16=NO"]
+            self.additional_args += ["-DENABLE_CODEC2=NO"]
+            self.additional_args += ["-DENABLE_G729=NO"]
+            self.additional_args += ["-DENABLE_GSM=NO"]
+            self.additional_args += ["-DENABLE_ILBC=NO"]
+            self.additional_args += ["-DENABLE_ISAC=NO"]
+            self.additional_args += ["-DENABLE_OPUS=YES"]
+            self.additional_args += ["-DENABLE_SILK=NO"]
+            self.additional_args += ["-DENABLE_SPEEX=YES"]
+            self.additional_args += ["-DENABLE_FFMPEG=NO"]
+            self.additional_args += ["-DENABLE_H263=NO"]
+            self.additional_args += ["-DENABLE_H263P=NO"]
+            self.additional_args += ["-DENABLE_MPEG4=NO"]
+            self.additional_args += ["-DENABLE_OPENH264=NO"]
+            self.additional_args += ["-DENABLE_VPX=NO"]
+            self.additional_args += ["-DENABLE_SRTP=YES"]
 
     def list_feature_target(self):
         return android_targets['armv7']
